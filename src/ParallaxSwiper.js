@@ -29,7 +29,7 @@ class ParallaxSwiper extends Component {
   }
 
   onScrollEnd(e) {
-    const { vertical, onMomentumScrollEnd } = this.props;
+    const { category, vertical, onMomentumScrollEnd } = this.props;
     const contentOffset = vertical
       ? e.nativeEvent.contentOffset.y
       : e.nativeEvent.contentOffset.x;
@@ -37,7 +37,7 @@ class ParallaxSwiper extends Component {
 
     // Divide content offset by size of the view to see which page is visible
     this.pageIndex = Math.abs((contentOffset / viewSize).toFixed()) || 0;
-    onMomentumScrollEnd(this.pageIndex);
+    onMomentumScrollEnd(this.pageIndex, category);
   }
 
   setScrollViewSize = (width, height) => {
